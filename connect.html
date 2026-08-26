@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Connecting to Steam Server...</title>
+</head>
+<body>
+    <p>Connecting to game server... If Steam doesn't open automatically, <a id="link" href="#">click here</a>.</p>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const ip = urlParams.get('ip');
+        if (ip) {
+            const steamUrl = `steam://connect/${ip}`;
+            document.getElementById('link').href = steamUrl;
+            window.location.href = steamUrl;
+        } else {
+            document.body.innerText = "Error: No server IP provided.";
+        }
+    </script>
+</body>
+</html>
