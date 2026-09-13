@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Joining L4D2 Lobby...</title>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const appid = params.get('appid') || '550';
+            const lobby = params.get('lobby');
+            const steamid = params.get('steamid');
+
+            if (lobby && steamid) {
+                // Trigger the Steam protocol launch
+                window.location.href = `steam://joinlobby/${appid}/${lobby}/${steamid}`;
+            } else {
+                document.getElementById('status').innerText = "❌ Error: Invalid lobby parameters.";
+            }
+        });
+    </script>
+</head>
+<body style="background: #1b2838; color: #fff; font-family: sans-serif; text-align: center; padding-top: 50px;">
+    <h2>🎮 Launching Left 4 Dead 2 Lobby...</h2>
+    <p id="status">If your game doesn't open automatically, make sure Steam is running.</p>
+</body>
+</html>
